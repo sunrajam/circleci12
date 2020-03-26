@@ -23,6 +23,7 @@ jobs:
       - run: gcloud docker -- push eu.gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1
 
 workflows:
+  version: 2
   build_and_push:
     jobs:
       - build:
