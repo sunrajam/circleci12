@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run: echo "hello world"
   push-image:
-  	machine: true
+    machine: true
     steps:
       - checkout
       - run: echo ${CISCO_AUTH} > ${HOME}/gcp-key.json
@@ -27,5 +27,6 @@ workflows:
     jobs:
       - build
       - push-image:
-		requires:
-        	- build
+        requires:
+          - build
+	  
