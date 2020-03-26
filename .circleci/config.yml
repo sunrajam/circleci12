@@ -26,7 +26,7 @@ jobs:
       - run: echo "hello world" # run the `echo` command
       # Download and cache dependencies
     
-push-image:
+  push-image:
     
     machine: true
     
@@ -41,7 +41,7 @@ push-image:
 
 workflows:
   version: 2
-  test-and-build-image:
+  build-and-push-image:
     jobs:
       - build:
       - push-image:
