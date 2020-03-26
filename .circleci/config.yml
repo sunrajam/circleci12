@@ -30,4 +30,4 @@ workflows:
       - build
       - push-image:
           requires:
-            -build
+            - build
