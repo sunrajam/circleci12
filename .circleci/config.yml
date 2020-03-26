@@ -1,35 +1,19 @@
-# Java Gradle CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-java/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:4.8.2
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
     working_directory: ~/repo
 
     environment:
       # Customize the JVM maximum heap limit
       JVM_OPTS: -Xmx3200m
       TERM: dumb
-
     steps:
       - checkout
-      - run: echo "hello world" # run the `echo` command
-      # Download and cache dependencies
-    
-push-image:
-    
-    machine: true
-    
+      - run: echo "hello world"
+  push-image:
+  	machine: true
     steps:
       - checkout
       - run: echo ${CISCO_AUTH} > ${HOME}/gcp-key.json
@@ -37,14 +21,11 @@ push-image:
       - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
       - run: gcloud --quiet config set project ${GCP_PROJECT}
       - run: gcloud docker -- push eu.gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1
-      
-
 workflows:
   version: 2
-  build-and-push-image:
+  build_and_push:
     jobs:
-      - build:
+      - build
       - push-image:
-          requires:
-            - build
-      
+		requires:
+        	- build
