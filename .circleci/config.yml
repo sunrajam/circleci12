@@ -38,3 +38,13 @@ push-image:
       - run: gcloud --quiet config set project ${GCP_PROJECT}
       - run: gcloud docker -- push eu.gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1
       
+
+workflows:
+  version: 2
+  test-and-build-image:
+    jobs:
+      - build:
+      - push-image:
+          requires:
+            - build
+      
