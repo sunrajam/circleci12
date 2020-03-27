@@ -30,12 +30,13 @@ jobs:
       - run: pwd
       - run: ls -latr
       - run: echo ${CISCO_AUTH} > ${HOME}/gcp-key.json
-      - run: docker build --rm=false -f ./.circleci/Dockerfile -t docker.cisco.com/sunrajam/test/${IMAGE_NAME}:$CIRCLE_SHA1 ./.circleci
+      - run: docker build --rm=false -f ./.circleci/Dockerfile -t containers.cisco.com/sunrajam/test:$CIRCLE_SHA1 ./.circleci
     #  - run: docker build --rm=false -t containers.cisco.com/sunrajam/${CNAAP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1 .
     # - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
     # - run: gcloud --quiet config set project ${GCP_PROJECT}
     # - run: gcloud docker -- push eu.gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1
-      - run: docker push docker.cisco.com/sunrajam/test/${IMAGE_NAME}:$CIRCLE_SHA1
+    # - run: docker push containers.cisco.com/sunrajam/test:3d92863c90f32e46e97cf59d39d326516a18a79e
+      - run: docker push containers.cisco.com/sunrajam/test:$CIRCLE_SHA1
 
 workflows:
   version: 2
