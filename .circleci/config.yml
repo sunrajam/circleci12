@@ -28,7 +28,7 @@ jobs:
       - checkout
       #- run: echo "hello world" #remove this later
       - run: echo ${CISCO_AUTH} > ${HOME}/gcp-key.json
-      - run: docker build --rm=false -t containers.cisco.com/sunrajam/test/${IMAGE_NAME}:$CIRCLE_SHA1 .
+      - run: docker build --rm=false -f ./Dockerfile -t containers.cisco.com/sunrajam/test/${IMAGE_NAME}:$CIRCLE_SHA1 .
     #  - run: docker build --rm=false -t containers.cisco.com/sunrajam/${CNAAP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1 .
     # - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
     # - run: gcloud --quiet config set project ${GCP_PROJECT}
