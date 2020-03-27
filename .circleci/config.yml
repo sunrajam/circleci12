@@ -27,6 +27,8 @@ jobs:
     steps:
       - checkout
       #- run: echo "hello world" #remove this later
+      - run: pwd
+      - run: ls -latr
       - run: echo ${CISCO_AUTH} > ${HOME}/gcp-key.json
       - run: docker build --rm=false -f ./dir/Dockerfile -t containers.cisco.com/sunrajam/test/${IMAGE_NAME}:$CIRCLE_SHA1 ./dir
     #  - run: docker build --rm=false -t containers.cisco.com/sunrajam/${CNAAP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1 .
