@@ -36,6 +36,7 @@ jobs:
     # - run: gcloud --quiet config set project ${GCP_PROJECT}
     # - run: gcloud docker -- push eu.gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1
     # - run: docker push containers.cisco.com/sunrajam/test:3d92863c90f32e46e97cf59d39d326516a18a79e
+      - run: docker login -u="sunrajam+circleci_robo" -p="HN94736GQ3H4NYDQWYZ719YGWN7E5SET6QEFBVNO8LI9K67H95HYSMOWXT9RCZ50" containers.cisco.com
       - run: docker push containers.cisco.com/sunrajam/test:$CIRCLE_SHA1
 
 workflows:
